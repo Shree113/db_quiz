@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+import dj_database_url
 from dotenv import load_dotenv
 import os
 
@@ -79,15 +80,9 @@ WSGI_APPLICATION = 'myproject.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'quizdb',
-        'USER': 'postgres',
-        'PASSWORD': 'shree1234',
-        'HOST': 'dpg-cvdtj2an91rc73bbjlq0-a.render.com',
-        'PORT': '5432',
-    }
+    'default': dj_database_url.config(conn_max_age=600, ssl_require=True)
 }
+
 
 
 
